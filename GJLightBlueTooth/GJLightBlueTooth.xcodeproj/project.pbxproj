@@ -15,6 +15,9 @@
 		E11C2D9F2060FE2700484F54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E11C2D9E2060FE2700484F54 /* main.m */; };
 		E11C2DA92060FE2700484F54 /* GJLightBlueToothTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E11C2DA82060FE2700484F54 /* GJLightBlueToothTests.m */; };
 		E11C2DB42060FE2700484F54 /* GJLightBlueToothUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E11C2DB32060FE2700484F54 /* GJLightBlueToothUITests.m */; };
+		E11C2DC62060FFB800484F54 /* GJUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E11C2DC52060FFB800484F54 /* GJUtil.m */; };
+		E11C2DCC2061021700484F54 /* DevicesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E11C2DCB2061021700484F54 /* DevicesListViewController.m */; };
+		E11C2DCF2061024700484F54 /* DevicesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E11C2DCE2061024700484F54 /* DevicesListModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,14 @@
 		E11C2DAF2060FE2700484F54 /* GJLightBlueToothUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GJLightBlueToothUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E11C2DB32060FE2700484F54 /* GJLightBlueToothUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GJLightBlueToothUITests.m; sourceTree = "<group>"; };
 		E11C2DB52060FE2700484F54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E11C2DC12060FE9600484F54 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		E11C2DC32060FF8F00484F54 /* GJHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GJHeader.h; sourceTree = "<group>"; };
+		E11C2DC42060FFB800484F54 /* GJUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GJUtil.h; sourceTree = "<group>"; };
+		E11C2DC52060FFB800484F54 /* GJUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GJUtil.m; sourceTree = "<group>"; };
+		E11C2DCA2061021700484F54 /* DevicesListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DevicesListViewController.h; sourceTree = "<group>"; };
+		E11C2DCB2061021700484F54 /* DevicesListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DevicesListViewController.m; sourceTree = "<group>"; };
+		E11C2DCD2061024700484F54 /* DevicesListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DevicesListModel.h; sourceTree = "<group>"; };
+		E11C2DCE2061024700484F54 /* DevicesListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DevicesListModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +112,11 @@
 		E11C2D8E2060FE2700484F54 /* GJLightBlueTooth */ = {
 			isa = PBXGroup;
 			children = (
+				E11C2DD02061032C00484F54 /* GJLightBlueTooth */,
+				E11C2DC7206101F300484F54 /* Models */,
+				E11C2DC9206101F300484F54 /* ViewControllers */,
+				E11C2DC8206101F300484F54 /* Views */,
+				E11C2DC22060FF7900484F54 /* Common */,
 				E11C2D8F2060FE2700484F54 /* AppDelegate.h */,
 				E11C2D902060FE2700484F54 /* AppDelegate.m */,
 				E11C2D922060FE2700484F54 /* ViewController.h */,
@@ -110,6 +126,7 @@
 				E11C2D9A2060FE2700484F54 /* LaunchScreen.storyboard */,
 				E11C2D9D2060FE2700484F54 /* Info.plist */,
 				E11C2D9E2060FE2700484F54 /* main.m */,
+				E11C2DC12060FE9600484F54 /* PrefixHeader.pch */,
 			);
 			path = GJLightBlueTooth;
 			sourceTree = "<group>";
@@ -130,6 +147,48 @@
 				E11C2DB52060FE2700484F54 /* Info.plist */,
 			);
 			path = GJLightBlueToothUITests;
+			sourceTree = "<group>";
+		};
+		E11C2DC22060FF7900484F54 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E11C2DC32060FF8F00484F54 /* GJHeader.h */,
+				E11C2DC42060FFB800484F54 /* GJUtil.h */,
+				E11C2DC52060FFB800484F54 /* GJUtil.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E11C2DC7206101F300484F54 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E11C2DCD2061024700484F54 /* DevicesListModel.h */,
+				E11C2DCE2061024700484F54 /* DevicesListModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E11C2DC8206101F300484F54 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E11C2DC9206101F300484F54 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E11C2DCA2061021700484F54 /* DevicesListViewController.h */,
+				E11C2DCB2061021700484F54 /* DevicesListViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E11C2DD02061032C00484F54 /* GJLightBlueTooth */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GJLightBlueTooth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,7 +326,10 @@
 			files = (
 				E11C2D942060FE2700484F54 /* ViewController.m in Sources */,
 				E11C2D9F2060FE2700484F54 /* main.m in Sources */,
+				E11C2DC62060FFB800484F54 /* GJUtil.m in Sources */,
+				E11C2DCC2061021700484F54 /* DevicesListViewController.m in Sources */,
 				E11C2D912060FE2700484F54 /* AppDelegate.m in Sources */,
+				E11C2DCF2061024700484F54 /* DevicesListModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +494,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NS2J6E32M9;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/GJLightBlueTooth/PrefixHeader.pch";
 				INFOPLIST_FILE = GJLightBlueTooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gaojun.GJLightBlueTooth;
@@ -446,6 +509,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NS2J6E32M9;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/GJLightBlueTooth/PrefixHeader.pch";
 				INFOPLIST_FILE = GJLightBlueTooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gaojun.GJLightBlueTooth;
