@@ -11,7 +11,8 @@
 
 #import "GJUtil.h"
 #import "SVProgressHUD.h"
-#import "GJLightBlueTooth.h"
+#import "MyBLETool.h"
+#import "CBPeripheral+RSSI.h"
 
 #define SCREEN_WIDTH self.view.frame.size.width
 #define SCREEN_HEIGHT self.view.frame.size.height

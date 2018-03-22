@@ -58,19 +58,29 @@
  * 发送数据
  * send data
  */
-- (void)sendDataToPeripheral:(CBPeripheral *)peripheral AndCharacteristics:(CBCharacteristic *)writeCharacteristics Command:(NSString *)command{
+- (void)sendDataToPeripheral:(CBPeripheral *)peripheral AndCharacteristics:(CBCharacteristic *)writeCharacteristics Command:(NSString *)command NSEncoding:(NSStringEncoding)encoding{
     
-    NSData *cmdData = [[NSString stringWithFormat:@"%@",command] dataUsingEncoding:NSASCIIStringEncoding];
+    NSData *cmdData = [[NSString stringWithFormat:@"%@",command] dataUsingEncoding:encoding];
     
     NSOperation *opration = [NSBlockOperation blockOperationWithBlock:^{
         [peripheral writeValue:cmdData
             forCharacteristic:writeCharacteristics
                          type:CBCharacteristicWriteWithoutResponse];
-        
-        [NSThread sleepForTimeInterval:SleepTimeGap];
+        /*
+         * you can set thread time interval.but the order while delay when there are a lot of orders.
+         */
+        //[NSThread sleepForTimeInterval:SleepTimeGap];
     }];
     
     [self.writeQueue addOperation:opration];
+}
+
+/*
+ * 读取信号量
+ * read RSSI
+ */
+- (void)readRSSIWithPeriperal:(CBPeripheral *)peripheral{
+    [peripheral readRSSI];
 }
 
 #pragma mark - CBCentralManagerDelegate
@@ -86,39 +96,49 @@
             return;
         }
     }
+    
+    if (self.BlockWhenCentralManagerUpdateStatus != nil){
+        self.BlockWhenCentralManagerUpdateStatus(central);
+    }
 }
 
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *, id> *)advertisementData RSSI:(NSNumber *)RSSI{
-    //NSLog(@"%@",peripheral);
-    if ([GJLBTCallBack sharedInstance].BlockWhenDiscoverPeriperals != nil){
-        [GJLBTCallBack sharedInstance].BlockWhenDiscoverPeriperals(central,peripheral,advertisementData,RSSI);
+    if (self.BlockWhenDiscoverPeriperals != nil){
+        self.BlockWhenDiscoverPeriperals(central,peripheral,advertisementData,RSSI);
     }
 }
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral{
-    if ([GJLBTCallBack sharedInstance].BlockWhenSccuessConnectToPeriperal != nil){
-        [GJLBTCallBack sharedInstance].BlockWhenSccuessConnectToPeriperal(central,peripheral);
+    if (self.BlockWhenSccuessConnectToPeriperal != nil){
+        self.BlockWhenSccuessConnectToPeriperal(central,peripheral);
     }
     
+    peripheral.delegate = self;
     [peripheral discoverServices:nil];
 }
 
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error{
-    if ([GJLBTCallBack sharedInstance].BlockWhenFailConnectToPeriperal != nil){
-        [GJLBTCallBack sharedInstance].BlockWhenFailConnectToPeriperal(central,peripheral,error);
+    if (self.BlockWhenFailConnectToPeriperal != nil){
+        self.BlockWhenFailConnectToPeriperal(central,peripheral,error);
     }
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error{
-    if ([GJLBTCallBack sharedInstance].BlockWhenCancelConnectToPeriperal != nil){
-        [GJLBTCallBack sharedInstance].BlockWhenCancelConnectToPeriperal(central,peripheral,error);
+    if (self.BlockWhenCancelConnectToPeriperal != nil){
+        self.BlockWhenCancelConnectToPeriperal(central,peripheral,error);
     }
 }
 
 #pragma mark - CBPeripheralDelegate
+-(void)peripheral:(CBPeripheral *)peripheral didReadRSSI:(NSNumber *)RSSI error:(NSError *)error{
+    if (self.BlockWhenRSSIUpdate != nil){
+        self.BlockWhenRSSIUpdate(peripheral, RSSI, error);
+    }
+}
+
 -(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
-    if ([GJLBTCallBack sharedInstance].BlockWhenDiscoverSevices != nil){
-        [GJLBTCallBack sharedInstance].BlockWhenDiscoverSevices(peripheral, error);
+    if (self.BlockWhenDiscoverSevices != nil){
+        self.BlockWhenDiscoverSevices(peripheral, error);
     }
     
     for (CBService *service in peripheral.services){
@@ -127,8 +147,8 @@
 }
 
 -(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error{
-    if ([GJLBTCallBack sharedInstance].BlockWhenDiscoverCharacteritics != nil){
-        [GJLBTCallBack sharedInstance].BlockWhenDiscoverCharacteritics(peripheral, service, error);
+    if (self.BlockWhenDiscoverCharacteritics != nil){
+        self.BlockWhenDiscoverCharacteritics(peripheral, service, error);
     }
     
     for (CBCharacteristic *characteristic in service.characteristics) {
@@ -137,8 +157,8 @@
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-    if ([GJLBTCallBack sharedInstance].BlockWhenDidUpdateValueForCharacteritics != nil){
-        [GJLBTCallBack sharedInstance].BlockWhenDidUpdateValueForCharacteritics(peripheral, characteristic, error);
+    if (self.BlockWhenDidUpdateValueForCharacteritics != nil){
+        self.BlockWhenDidUpdateValueForCharacteritics(peripheral, characteristic, error);
     }
 }
 

@@ -9,18 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "GJLBTCentralManager.h"
-#import "GJLBTCallBack.h"
 #import "GJLBTBlockDefine.h"
+
 
 /*
  * 此类作为用户与蓝牙库的中介，用于发指令与回传结果。
  * this class is a agency between user and BLE library, it can send orders and get callback from BLE.
  */
 @interface GJLightBlueTooth : NSObject
-
-@property(nonatomic,retain)CBPeripheral *selectedPeri;
-@property(nonatomic,retain)CBCharacteristic *writeCharacteristic;
-@property(nonatomic,retain)CBCharacteristic *notifyCharacteristic;
 
 /*
  * 创建 LBT 蓝牙单例
@@ -56,9 +52,21 @@
  * 向设备发送指令数据
  * send data
  */
-- (void)sendDataToPeriperal:(CBPeripheral *)peripheral Command:(NSString *)command;
+- (void)sendDataToPeriperal:(CBPeripheral *)peripheral WriteCharacteristic:(CBCharacteristic *)writeCharacteristic Command:(NSString *)command NSEncoding:(NSStringEncoding)encoding;
+
+/*
+ * 读取信号量
+ * read RSSI
+ */
+- (void)readRSSIWithPeriperal:(CBPeripheral *)peripheral;
 
 //=======================================================set block======================================
+
+/*
+ * 中央设备状态更新时Block
+ * set block when central manager status update
+ */
+- (void)setBlockWhenCentralManagerStatusUpdate:(LBTBlockWhenCentralManagerUpdateStatus)block;
 
 /*
  * 设置扫描到设备时Block
@@ -101,5 +109,11 @@
  * set block when character's value changed
  */
 - (void)setBlockWhenDidUpdateValueForCharacteritics:(LBTBlockWhenDidUpdateValueForCharacteritics)block;
+
+/*
+ * 当被读蓝牙信号量设备信号量改变时Block
+ * set block when update rssi
+ */
+- (void)setBlockWhenDidUpdateRSSI:(LBTBlockWhenRSSIUpdate)block;
 
 @end

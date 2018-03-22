@@ -66,18 +66,33 @@
  * 向设备发送指令数据
  * send data
  */
-- (void)sendDataToPeriperal:(CBPeripheral *)peripheral Command:(NSString *)command{
-    [_LBTCentralManager sendDataToPeripheral:peripheral AndCharacteristics:self.writeCharacteristic Command:command];
+- (void)sendDataToPeriperal:(CBPeripheral *)peripheral WriteCharacteristic:(CBCharacteristic *)writeCharacteristic Command:(NSString *)command NSEncoding:(NSStringEncoding)encoding{
+    [_LBTCentralManager sendDataToPeripheral:peripheral AndCharacteristics:writeCharacteristic Command:command NSEncoding:encoding];
+}
+
+/*
+ * 读取信号量
+ * read RSSI
+ */
+- (void)readRSSIWithPeriperal:(CBPeripheral *)peripheral{
+    [_LBTCentralManager readRSSIWithPeriperal:peripheral];
 }
 
 //=======================================================set block======================================
+/*
+ * 中央设备状态更新时Block
+ * set block when central manager status update
+ */
+- (void)setBlockWhenCentralManagerStatusUpdate:(LBTBlockWhenCentralManagerUpdateStatus)block{
+    _LBTCentralManager.BlockWhenCentralManagerUpdateStatus = block;
+}
 
 /*
  * 设置扫描到设备时Block
  * set block when discover peripherals
  */
 - (void)setBlockWhenDiscoverPeriperals:(void (^)(CBCentralManager *central,CBPeripheral *peripheral,NSDictionary *advertisementData, NSNumber *RSSI))block{
-    [GJLBTCallBack sharedInstance].BlockWhenDiscoverPeriperals = block;
+    _LBTCentralManager.BlockWhenDiscoverPeriperals = block;
 }
 
 /*
@@ -85,7 +100,7 @@
  * set block when connect peripheral successfully
  */
 - (void)setBlockWhenSccuessConnectToPeriperal:(void (^)(CBCentralManager *central,CBPeripheral *peripheral))block{
-    [GJLBTCallBack sharedInstance].BlockWhenSccuessConnectToPeriperal = block;
+    _LBTCentralManager.BlockWhenSccuessConnectToPeriperal = block;
 }
 
 /*
@@ -93,7 +108,7 @@
  * set block when fail to connect periperal
  */
 - (void)setBlockWhenFailConnectToPeriperal:(void (^)(CBCentralManager *central,CBPeripheral *peripheral,NSError *error))block{
-    [GJLBTCallBack sharedInstance].BlockWhenFailConnectToPeriperal = block;
+    _LBTCentralManager.BlockWhenFailConnectToPeriperal = block;
 }
 
 /*
@@ -101,7 +116,7 @@
  * set block when cancel connect peripheral
  */
 - (void)setBlockWhenCancelConnectToPeriperal:(void (^)(CBCentralManager *central,CBPeripheral *peripheral,NSError *error))block{
-    [GJLBTCallBack sharedInstance].BlockWhenCancelConnectToPeriperal = block;
+    _LBTCentralManager.BlockWhenCancelConnectToPeriperal = block;
 }
 
 /*
@@ -109,7 +124,7 @@
  * set block when discover services
  */
 - (void)setBlockWhenDiscoverServices:(LBTBlockWhenDiscoverSevices)block{
-    [GJLBTCallBack sharedInstance].BlockWhenDiscoverSevices = block;
+    _LBTCentralManager.BlockWhenDiscoverSevices = block;
 }
 
 /*
@@ -117,7 +132,7 @@
  * set block when discover characteristics
  */
 - (void)setBlockWhenDiscoverCharacteristics:(LBTBlockWhenDiscoverCharacteritics)block{
-    [GJLBTCallBack sharedInstance].BlockWhenDiscoverCharacteritics = block;
+    _LBTCentralManager.BlockWhenDiscoverCharacteritics = block;
 }
 
 /*
@@ -125,7 +140,15 @@
  * set block when character's value changed
  */
 - (void)setBlockWhenDidUpdateValueForCharacteritics:(LBTBlockWhenDidUpdateValueForCharacteritics)block{
-    [GJLBTCallBack sharedInstance].BlockWhenDidUpdateValueForCharacteritics = block;
+    _LBTCentralManager.BlockWhenDidUpdateValueForCharacteritics = block;
+}
+
+/*
+ * 当被读蓝牙信号量设备信号量改变时Block
+ * set block when update rssi
+ */
+- (void)setBlockWhenDidUpdateRSSI:(LBTBlockWhenRSSIUpdate)block{
+    _LBTCentralManager.BlockWhenRSSIUpdate = block;
 }
 
 

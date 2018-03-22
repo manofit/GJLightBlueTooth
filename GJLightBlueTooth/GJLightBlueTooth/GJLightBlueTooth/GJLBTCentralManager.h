@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "GJLBTBlockDefine.h"
-#import "GJLBTCallBack.h"
+
 
 /*
  * 此类是真正的蓝牙库，所有从用户端发来的指令经LBT转发后到这里，发送给设备，并从设备获取数据，回传给用户。
@@ -17,9 +17,18 @@
  */
 @interface GJLBTCentralManager : NSObject<CBCentralManagerDelegate,CBPeripheralDelegate>
 
+@property(nonatomic,copy)LBTBlockWhenCentralManagerUpdateStatus BlockWhenCentralManagerUpdateStatus;
+@property(nonatomic,copy)LBTBlockWhenDiscoverPeriperals BlockWhenDiscoverPeriperals;
+@property(nonatomic,copy)LBTBlockWhenSccuessConnectToPeriperal BlockWhenSccuessConnectToPeriperal;
+@property(nonatomic,copy)LBTBlockWhenFailConnectToPeriperal BlockWhenFailConnectToPeriperal;
+@property(nonatomic,copy)LBTBlockWhenCancelConnectToPeriperal BlockWhenCancelConnectToPeriperal;
+@property(nonatomic,copy)LBTBlockWhenDiscoverSevices BlockWhenDiscoverSevices;
+@property(nonatomic,copy)LBTBlockWhenDiscoverCharacteritics BlockWhenDiscoverCharacteritics;
+@property(nonatomic,copy)LBTBlockWhenDidUpdateValueForCharacteritics BlockWhenDidUpdateValueForCharacteritics;
+@property(nonatomic,copy)LBTBlockWhenRSSIUpdate BlockWhenRSSIUpdate;
+
 @property(nonatomic,retain)CBCentralManager *centralManager;
-// send queue 指令队列
-@property (nonatomic,strong)NSOperationQueue *writeQueue;
+@property (nonatomic,strong)NSOperationQueue *writeQueue;// send queue 指令队列
 
 /*
  * 扫描
@@ -49,6 +58,12 @@
  * 发送数据
  * send data
  */
-- (void)sendDataToPeripheral:(CBPeripheral *)peripheral AndCharacteristics:(CBCharacteristic *)writeCharacteristics Command:(NSString *)command;
+- (void)sendDataToPeripheral:(CBPeripheral *)peripheral AndCharacteristics:(CBCharacteristic *)writeCharacteristics Command:(NSString *)command NSEncoding:(NSStringEncoding)encoding;
+
+/*
+ * 读取信号量
+ * read RSSI
+ */
+- (void)readRSSIWithPeriperal:(CBPeripheral *)peripheral;
 
 @end

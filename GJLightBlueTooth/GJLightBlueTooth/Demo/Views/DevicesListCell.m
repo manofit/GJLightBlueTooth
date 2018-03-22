@@ -18,6 +18,8 @@
      * mac address in iOS can't be get, you can use UUIDString to sign device. but UUIDString in different mobiles are different.
      */
     self.macAddressLabel.text = peripheral.identifier.UUIDString;
+    
+    self.rssiLabel.text = [peripheral.rssi stringValue];
 }
 
 @end

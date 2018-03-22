@@ -18,7 +18,6 @@
 		E11C2DD82061F1A100484F54 /* GJLightBlueTooth.m in Sources */ = {isa = PBXBuildFile; fileRef = E11C2DD72061F1A100484F54 /* GJLightBlueTooth.m */; };
 		E11C2DDB2061F40600484F54 /* GJLBTCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E11C2DDA2061F40600484F54 /* GJLBTCentralManager.m */; };
 		E11C2DDE2061FFBA00484F54 /* GJLBTBlockDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = E11C2DDD2061FFBA00484F54 /* GJLBTBlockDefine.m */; };
-		E11C2DE12062018100484F54 /* GJLBTCallBack.m in Sources */ = {isa = PBXBuildFile; fileRef = E11C2DE02062018100484F54 /* GJLBTCallBack.m */; };
 		E11C2E112062566400484F54 /* DevicesListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E11C2DF92062566400484F54 /* DevicesListCell.m */; };
 		E11C2E122062566400484F54 /* DevicesListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11C2DFA2062566400484F54 /* DevicesListCell.xib */; };
 		E11C2E132062566400484F54 /* GJUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E11C2DFE2062566400484F54 /* GJUtil.m */; };
@@ -29,6 +28,8 @@
 		E11C2E182062566400484F54 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E11C2E0A2062566400484F54 /* SVRadialGradientLayer.m */; };
 		E11C2E192062566400484F54 /* DataSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E11C2E0E2062566400484F54 /* DataSendViewController.m */; };
 		E11C2E1A2062566400484F54 /* DevicesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E11C2E102062566400484F54 /* DevicesListViewController.m */; };
+		E11C2E1D20633FF000484F54 /* MyBLETool.m in Sources */ = {isa = PBXBuildFile; fileRef = E11C2E1C20633FF000484F54 /* MyBLETool.m */; };
+		E11C2E2020637FC600484F54 /* CBPeripheral+RSSI.m in Sources */ = {isa = PBXBuildFile; fileRef = E11C2E1F20637FC600484F54 /* CBPeripheral+RSSI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,8 +73,6 @@
 		E11C2DDA2061F40600484F54 /* GJLBTCentralManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GJLBTCentralManager.m; sourceTree = "<group>"; };
 		E11C2DDC2061FFBA00484F54 /* GJLBTBlockDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GJLBTBlockDefine.h; sourceTree = "<group>"; };
 		E11C2DDD2061FFBA00484F54 /* GJLBTBlockDefine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GJLBTBlockDefine.m; sourceTree = "<group>"; };
-		E11C2DDF2062018100484F54 /* GJLBTCallBack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GJLBTCallBack.h; sourceTree = "<group>"; };
-		E11C2DE02062018100484F54 /* GJLBTCallBack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GJLBTCallBack.m; sourceTree = "<group>"; };
 		E11C2DF82062566400484F54 /* DevicesListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevicesListCell.h; sourceTree = "<group>"; };
 		E11C2DF92062566400484F54 /* DevicesListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevicesListCell.m; sourceTree = "<group>"; };
 		E11C2DFA2062566400484F54 /* DevicesListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DevicesListCell.xib; sourceTree = "<group>"; };
@@ -94,6 +93,10 @@
 		E11C2E0E2062566400484F54 /* DataSendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSendViewController.m; sourceTree = "<group>"; };
 		E11C2E0F2062566400484F54 /* DevicesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevicesListViewController.h; sourceTree = "<group>"; };
 		E11C2E102062566400484F54 /* DevicesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevicesListViewController.m; sourceTree = "<group>"; };
+		E11C2E1B20633FF000484F54 /* MyBLETool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBLETool.h; sourceTree = "<group>"; };
+		E11C2E1C20633FF000484F54 /* MyBLETool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBLETool.m; sourceTree = "<group>"; };
+		E11C2E1E20637FC600484F54 /* CBPeripheral+RSSI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CBPeripheral+RSSI.h"; sourceTree = "<group>"; };
+		E11C2E1F20637FC600484F54 /* CBPeripheral+RSSI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CBPeripheral+RSSI.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,8 +190,6 @@
 				E11C2DDA2061F40600484F54 /* GJLBTCentralManager.m */,
 				E11C2DDC2061FFBA00484F54 /* GJLBTBlockDefine.h */,
 				E11C2DDD2061FFBA00484F54 /* GJLBTBlockDefine.m */,
-				E11C2DDF2062018100484F54 /* GJLBTCallBack.h */,
-				E11C2DE02062018100484F54 /* GJLBTCallBack.m */,
 			);
 			path = GJLightBlueTooth;
 			sourceTree = "<group>";
@@ -200,6 +201,10 @@
 				E11C2DFF2062566400484F54 /* ThirdParty */,
 				E11C2E0C2062566400484F54 /* ViewControllers */,
 				E11C2DF72062566400484F54 /* Views */,
+				E11C2E1B20633FF000484F54 /* MyBLETool.h */,
+				E11C2E1C20633FF000484F54 /* MyBLETool.m */,
+				E11C2E1E20637FC600484F54 /* CBPeripheral+RSSI.h */,
+				E11C2E1F20637FC600484F54 /* CBPeripheral+RSSI.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -398,14 +403,15 @@
 				E11C2D942060FE2700484F54 /* ViewController.m in Sources */,
 				E11C2D9F2060FE2700484F54 /* main.m in Sources */,
 				E11C2E182062566400484F54 /* SVRadialGradientLayer.m in Sources */,
+				E11C2E1D20633FF000484F54 /* MyBLETool.m in Sources */,
 				E11C2E132062566400484F54 /* GJUtil.m in Sources */,
-				E11C2DE12062018100484F54 /* GJLBTCallBack.m in Sources */,
 				E11C2E1A2062566400484F54 /* DevicesListViewController.m in Sources */,
 				E11C2E192062566400484F54 /* DataSendViewController.m in Sources */,
 				E11C2DD82061F1A100484F54 /* GJLightBlueTooth.m in Sources */,
 				E11C2E152062566400484F54 /* SVProgressAnimatedView.m in Sources */,
 				E11C2E142062566400484F54 /* SVIndefiniteAnimatedView.m in Sources */,
 				E11C2E112062566400484F54 /* DevicesListCell.m in Sources */,
+				E11C2E2020637FC600484F54 /* CBPeripheral+RSSI.m in Sources */,
 				E11C2D912060FE2700484F54 /* AppDelegate.m in Sources */,
 				E11C2DDB2061F40600484F54 /* GJLBTCentralManager.m in Sources */,
 				E11C2E172062566400484F54 /* SVProgressHUD.m in Sources */,
