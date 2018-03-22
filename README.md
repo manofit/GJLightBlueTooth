@@ -98,4 +98,6 @@ weakify(self);
         //[[NSNotificationCenter defaultCenter] postNotificationName:@"DiscoverCharacteristics" object:service];
     }];
 ```
-
+## effect
+![DeviceList](https://github.com/manofit/GJLightBlueTooth/blob/master/GJLightBlueTooth/GJLightBlueTooth/DeviceListVC.PNG)
+![DataSend](https://github.com/manofit/GJLightBlueTooth/blob/master/GJLightBlueTooth/GJLightBlueTooth/DataSendVC.PNG)
