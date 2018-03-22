@@ -94,7 +94,7 @@ You can also set time interval between orders, but the orders will delay if you 
 ## warning
 1. 在新版本的iOS中，已经不允许通过```peripheral.RSSI```来获取设备的信号量，必须在用```[peripheral readRSSI]```后，使用回调来获取。这就会造成在扫描到设备时候无法显示信号量。所以专门创建了一个分类CBPeripheral+RSSI，利用Runtime来动态给peripheral创建了一个```rssi```属性。
 
- In newest iOS system, wo can't get RSSI throungh ```peripheral.RSSI```. Instead, you should get callback after using ```[peripheral readRSSI]```, so we can't show RSSI when discover a lot of deivces. So I created a category CBPeripheral+RSSI, then added a property named ```rssi``` by using Runtime. 
+- In newest iOS system, wo can't get RSSI throungh ```peripheral.RSSI```. Instead, you should get callback after using ```[peripheral readRSSI]```, so we can't show RSSI when discover a lot of deivces. So I created a category CBPeripheral+RSSI, then added a property named ```rssi``` by using Runtime. 
 ```
 char nameKey;
 
@@ -108,7 +108,7 @@ char nameKey;
 ```
 2. 在MyBLETool中，需要设置GJLBTCentralManager回调流，这里为了防止循环引用，需要进行weak-strong dance。
 
- In MyBLETool, you need to set callback GJLBTCentralManager working flow. In case of cycle retain, you'd better set weak-strong dance.
+- In MyBLETool, you need to set callback GJLBTCentralManager working flow. In case of cycle retain, you'd better set weak-strong dance.
 ```
 weakify(self);
 
