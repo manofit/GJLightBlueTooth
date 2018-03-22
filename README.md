@@ -1,11 +1,17 @@
 # GJLightBlueTooth
 ```GJLightBlueTooth```是一个轻量级蓝牙库。
 
+```GJLightBlueTooth```is a lightweight bluetooth library.
+
 ## demo
 你可以在[Demo](https://github.com/manofit/GJLightBlueTooth/tree/master/GJLightBlueTooth/GJLightBlueTooth/Demo)中查看如何使用```GJLightBlueTooth```。
 
+You can try to use ```GJLightBlueTooth``` in [Demo](https://github.com/manofit/GJLightBlueTooth/tree/master/GJLightBlueTooth/GJLightBlueTooth/Demo).
+
 ## project architecture
 整个蓝牙库的架构是：用户 ——> GJLightBlueTooth ——> CoreBlueTooth ——> GJLightBlueTooth ——> 用户。
+
+The architecture of project is: user ——> GJLightBlueTooth ——> CoreBlueTooth ——> GJLightBlueTooth ——> user.
 
 其中：
 - GJLightBlueTooth：相当于一个中介，架起来自页面用户的指令和系统CoreBlueTooth交互的桥梁，这里的交互包括向蓝牙设备发送指令和获取回调。
