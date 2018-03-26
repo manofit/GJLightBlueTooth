@@ -52,6 +52,11 @@ After get Characteristic, you'd better mate CBCharacteristic in device with Char
 ```
 [self.BLE sendDataToPeriperal:peri WriteCharacteristic:self.writeCharacter Command:command NSEncoding:encoding]
 ```
+### reconnect & cancel reconnect
+```
+[self.BLE addReconnectPeriphearal:peri];
+[self.BLE deleteReconnectPeriphearal:peri];
+```
 If you like to keep a heartbeat with device, there is a new thread. you can set max concurrent operation count by yourself.
 
 ```
@@ -156,7 +161,11 @@ weakify(self);
 ```
 [self.BLE sendDataToPeriperal:peri WriteCharacteristic:self.writeCharacter Command:command NSEncoding:encoding]
 ```
-
+### 添加断开重连 & 取消断开重连
+```
+[self.BLE addReconnectPeriphearal:peri];
+[self.BLE deleteReconnectPeriphearal:peri];
+```
 这里针对现在很多公司提出需要手机与设备有心跳的要求，开启了一个线程队列。该队列设置能够同时存在的指令数为3。
 
 ```
