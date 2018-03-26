@@ -60,6 +60,13 @@
  */
 - (void)readRSSIWithPeriperal:(CBPeripheral *)peripheral;
 
+/*
+ * 添加重连设备 & 删除重连设备
+ * add reconnect device & delete reconnect device
+ */
+- (void)addReconnectPeriphearal:(CBPeripheral *)peripheral;
+- (void)deleteReconnectPeriphearal:(CBPeripheral *)peripheral;
+
 //=======================================================set block======================================
 
 /*

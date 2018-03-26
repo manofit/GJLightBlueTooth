@@ -23,5 +23,7 @@
 - (void)cancelConnectTo:(CBPeripheral *)peri;
 - (void)readRSSIWithPeripheral:(CBPeripheral *)peri;
 - (void)sendCommandToPeripheral:(CBPeripheral *)peri Command:(NSString *)command NSEncoding:(NSStringEncoding)encoding;
+- (void)deleteReconnectPeripheral:(CBPeripheral *)peri;
+- (void)addReconnectPeripheral:(CBPeripheral *)peri;
 
 @end

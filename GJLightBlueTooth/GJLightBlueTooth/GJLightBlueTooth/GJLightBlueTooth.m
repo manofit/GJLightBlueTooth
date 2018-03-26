@@ -78,6 +78,22 @@
     [_LBTCentralManager readRSSIWithPeriperal:peripheral];
 }
 
+/*
+ * 添加重连设备 & 删除重连设备
+ * add reconnect device & delete reconnect device
+ */
+- (void)addReconnectPeriphearal:(CBPeripheral *)peripheral{
+    if (![_LBTCentralManager.reConnectDeviceArray containsObject:peripheral]){
+        [_LBTCentralManager.reConnectDeviceArray addObject:peripheral];
+    }
+}
+
+- (void)deleteReconnectPeriphearal:(CBPeripheral *)peripheral{
+    if ([_LBTCentralManager.reConnectDeviceArray containsObject:peripheral]){
+        [_LBTCentralManager.reConnectDeviceArray removeObject:peripheral];
+    }
+}
+
 //=======================================================set block======================================
 /*
  * 中央设备状态更新时Block

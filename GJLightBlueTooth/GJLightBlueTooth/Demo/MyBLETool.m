@@ -54,6 +54,14 @@
     [self.BLE sendDataToPeriperal:peri WriteCharacteristic:self.writeCharacter Command:command NSEncoding:encoding];
 }
 
+- (void)addReconnectPeripheral:(CBPeripheral *)peri{
+    [self.BLE addReconnectPeriphearal:peri];
+}
+
+- (void)deleteReconnectPeripheral:(CBPeripheral *)peri{
+    [self.BLE deleteReconnectPeriphearal:peri];
+}
+
 - (void)setLightBlueToothWorkingFlow{
 
     weakify(self);

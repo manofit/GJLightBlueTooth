@@ -20,6 +20,8 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    self.isHandleCancel = NO;
+    
     [self addObserver];
 }
 
@@ -85,10 +87,19 @@
 }
 
 - (void)cancelConnectBtnAction{
+    
+    self.isHandleCancel = YES;
+    [[MyBLETool sharedMyBLETool] deleteReconnectPeripheral:self.peri];
+    
     [[MyBLETool sharedMyBLETool] cancelConnectTo:self.peri];
 }
 
 - (void)cancelConnectToPeriperal:(NSNotification *)noti{
+    
+    if (!self.isHandleCancel){
+        return;
+    }
+    
     [SVProgressHUD showErrorWithStatus:@"disconnect"];
     
     [self.navigationController popViewControllerAnimated:YES];

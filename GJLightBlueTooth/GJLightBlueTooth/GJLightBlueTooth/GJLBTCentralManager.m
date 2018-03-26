@@ -16,6 +16,8 @@
     if (self){
         self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
         
+        self.reConnectDeviceArray = [NSMutableArray array];
+        
         self.writeQueue = [[NSOperationQueue alloc] init];
         self.writeQueue.maxConcurrentOperationCount = 3;
     }
@@ -126,6 +128,10 @@
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error{
     if (self.BlockWhenCancelConnectToPeriperal != nil){
         self.BlockWhenCancelConnectToPeriperal(central,peripheral,error);
+    }
+    
+    if ([self.reConnectDeviceArray containsObject:peripheral]){
+        [self.centralManager connectPeripheral:peripheral options:nil];
     }
 }
 

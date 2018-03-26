@@ -144,6 +144,8 @@
 - (void)sccuessConnectToPeriperal:(NSNotification *)noti{
     [SVProgressHUD showSuccessWithStatus:@"connect success"];
     
+    [[MyBLETool sharedMyBLETool] addReconnectPeripheral:(CBPeripheral *)noti.object];
+    
     DataSendViewController *vc = [[DataSendViewController alloc] init];
     vc.peri = (CBPeripheral *)noti.object;
     [self.navigationController pushViewController:vc animated:YES];
