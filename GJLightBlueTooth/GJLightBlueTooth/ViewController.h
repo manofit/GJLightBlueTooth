@@ -1,3 +1,6 @@
+//  您好，谢谢您参考我的项目，如果有问题请移步
+//  https://github.com/manofit/GJLightBlueTooth
+
 //
 //  ViewController.h
 //  GJLightBlueTooth
