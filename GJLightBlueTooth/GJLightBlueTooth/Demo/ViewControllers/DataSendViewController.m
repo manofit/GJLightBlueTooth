@@ -19,6 +19,18 @@
 @end
 
 @implementation DataSendViewController
+-(NSTimer *)timer{
+    if (!_timer){
+        _timer = [NSTimer timerWithTimeInterval:0.2 target:self selector:@selector(sendHeartBeat) userInfo:nil repeats:YES];
+        
+        // 将定时器加入循环。mode为NSRunLoopCommonModes，防止页面滑动造成定时器停止。
+        // set mode NSRunLoopCommonModes, or timer will stop when page scroll.
+        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+    }
+    
+    return _timer;
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
@@ -74,7 +86,10 @@
     _rssiLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:_rssiLabel];
     
-    UIButton *cancelConnectBtn =[GJUtil createBtnWithFrame:CGRectMake((SCREEN_WIDTH - 150)/2, CGRectGetMaxY(_rssiLabel.frame) + 20, 150, 30) Title:@"cancel connect" Font:17.0f TitleColor:[UIColor blackColor] BtnBackgroundColor:[UIColor blueColor] Target:self Action:@selector(cancelConnectBtnAction)];
+    UIButton *heartbeatBtn = [GJUtil createBtnWithFrame:CGRectMake((SCREEN_WIDTH - 100)/2, CGRectGetMaxY(_rssiLabel.frame) + 20, 100, 30) Title:@"Heartbeat" Font:17.0f TitleColor:[UIColor blackColor] BtnBackgroundColor:[UIColor blueColor] Target:self Action:@selector(heartbeatBtnAction)];
+    [self.view addSubview:heartbeatBtn];
+    
+    UIButton *cancelConnectBtn =[GJUtil createBtnWithFrame:CGRectMake((SCREEN_WIDTH - 150)/2, CGRectGetMaxY(heartbeatBtn.frame) + 20, 150, 30) Title:@"cancel connect" Font:17.0f TitleColor:[UIColor blackColor] BtnBackgroundColor:[UIColor blueColor] Target:self Action:@selector(cancelConnectBtnAction)];
     [self.view addSubview:cancelConnectBtn];
     
 }
@@ -86,6 +101,14 @@
     
     [[MyBLETool sharedMyBLETool] sendCommandToPeripheral:self.peri Command:_textField.text NSEncoding:NSASCIIStringEncoding];
     
+}
+
+- (void)heartbeatBtnAction{
+    [self.timer fire];
+}
+
+- (void)sendHeartBeat{
+    [[MyBLETool sharedMyBLETool] sendCommandToPeripheral:self.peri Command:@"heartbeat_command" NSEncoding:NSASCIIStringEncoding];
 }
 
 - (void)cancelConnectBtnAction{
