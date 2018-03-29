@@ -104,6 +104,20 @@ weakify(self);
         //[[NSNotificationCenter defaultCenter] postNotificationName:@"DiscoverCharacteristics" object:service];
     }];
 ```
+3. Set NSTimer mode NSRunLoopCommonModes to avoid stop timer when page scrolling。
+```
+-(NSTimer *)timer{
+if (!_timer){
+_timer = [NSTimer timerWithTimeInterval:0.2 target:self selector:@selector(sendHeartBeat) userInfo:nil repeats:YES];
+
+// 将定时器加入循环。mode为NSRunLoopCommonModes，防止页面滑动造成定时器停止。
+// set mode NSRunLoopCommonModes, or timer will stop when page scroll.
+[[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+}
+
+return _timer;
+}
+```
 
 # GJLightBlueTooth
 ```GJLightBlueTooth```是一个轻量级蓝牙库。
@@ -212,6 +226,20 @@ weakify(self);
         }
         //[[NSNotificationCenter defaultCenter] postNotificationName:@"DiscoverCharacteristics" object:service];
     }];
+```
+3. 在发送心跳包时候，计时器的mode需要设置为NSRunLoopCommonModes，防止页面滑动造成计时器停止。
+```
+-(NSTimer *)timer{
+if (!_timer){
+_timer = [NSTimer timerWithTimeInterval:0.2 target:self selector:@selector(sendHeartBeat) userInfo:nil repeats:YES];
+
+// 将定时器加入循环。mode为NSRunLoopCommonModes，防止页面滑动造成定时器停止。
+// set mode NSRunLoopCommonModes, or timer will stop when page scroll.
+[[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+}
+
+return _timer;
+}
 ```
 ## effect
 ![DeviceList](https://github.com/manofit/GJLightBlueTooth/blob/master/GJLightBlueTooth/GJLightBlueTooth/DeviceListVC.PNG)
