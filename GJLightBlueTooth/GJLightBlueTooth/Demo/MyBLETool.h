@@ -13,11 +13,7 @@
 
 @interface MyBLETool : NSObject
 
-@property(nonatomic,retain)GJLightBlueTooth *BLE;
-@property(nonatomic,strong)CBCharacteristic *writeCharacter;
-
 + (instancetype)sharedMyBLETool;
-
 
 - (void)scan;
 - (void)stopScan;

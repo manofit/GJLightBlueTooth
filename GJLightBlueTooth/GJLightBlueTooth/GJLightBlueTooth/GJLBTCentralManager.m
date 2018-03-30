@@ -12,6 +12,12 @@
 #import "GJLBTCentralManager.h"
 
 #define SleepTimeGap 0.05
+@interface GJLBTCentralManager()
+@property(nonatomic,retain)CBCentralManager *centralManager;
+@property (nonatomic,strong)NSOperationQueue *writeQueue;// send queue 指令队列
+
+@end
+
 @implementation GJLBTCentralManager
 
 - (instancetype)init{

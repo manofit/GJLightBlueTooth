@@ -10,6 +10,13 @@
 
 #import "MyBLETool.h"
 
+@interface MyBLETool()
+
+@property(nonatomic,retain)GJLightBlueTooth *BLE;
+@property(nonatomic,strong)CBCharacteristic *writeCharacter;
+
+@end
+
 @implementation MyBLETool
 
 

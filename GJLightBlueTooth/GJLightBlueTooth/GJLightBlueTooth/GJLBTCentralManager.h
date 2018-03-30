@@ -30,8 +30,6 @@
 @property(nonatomic,copy)LBTBlockWhenDidUpdateValueForCharacteritics BlockWhenDidUpdateValueForCharacteritics;
 @property(nonatomic,copy)LBTBlockWhenRSSIUpdate BlockWhenRSSIUpdate;
 
-@property(nonatomic,retain)CBCentralManager *centralManager;
-@property (nonatomic,strong)NSOperationQueue *writeQueue;// send queue 指令队列
 @property(nonatomic,strong)NSMutableArray *reConnectDeviceArray; //断开后需要重连的设备 Device in this array will reconnect after disconnect.
 
 /*

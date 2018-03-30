@@ -16,6 +16,8 @@
     UILabel *_dataLabel;
     UILabel *_rssiLabel;
 }
+@property(nonatomic,assign)BOOL isHandleCancel;// 是否是主动断开连接，如果是则不自动重连，否则自动重连 will reconnect if you cancel connect yourself.
+@property(nonatomic,strong)NSTimer *timer;
 @end
 
 @implementation DataSendViewController
