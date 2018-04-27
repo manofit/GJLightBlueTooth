@@ -1,7 +1,7 @@
 
 # GJLightBlueTooth
 ```GJLightBlueTooth```是一个轻量级蓝牙库。
-
+## FOR ENGLISH DOC IN [https://github.com/manofit/GJLightBlueTooth/blob/master/ReadMe_EN.md](https://github.com/manofit/GJLightBlueTooth/blob/master/ReadMe_EN.md)
 ## demo
 你可以在[Demo](https://github.com/manofit/GJLightBlueTooth/tree/master/GJLightBlueTooth/GJLightBlueTooth/Demo)中查看如何使用```GJLightBlueTooth```。
 
