@@ -5,7 +5,7 @@
 ## demo
 你可以在[Demo](https://github.com/manofit/GJLightBlueTooth/tree/master/GJLightBlueTooth/GJLightBlueTooth/Demo)中查看如何使用```GJLightBlueTooth```。
 
-## project architecture
+## 项目架构
 整个蓝牙库的架构是：用户 ——> GJLightBlueTooth ——> CoreBlueTooth ——> GJLightBlueTooth ——> 用户。
 
 其中：
@@ -14,7 +14,7 @@
 
 而在Demo中，你还会看到MyBLETool这个类，这是为了将Demo项目中页面与业务分离而单独出来的一个类，可以理解为设备类。为了我们不需要在具体的页面中去设置回传的block。
 
-## how to use
+## 怎么使用
 在创建页面后，你应该初始化```GJLightBlueTooth```蓝牙工具：```self.BLE = [[GJLightBlueTooth alloc] init]```。
 
 在获取到Characteristic后，你应该根据实际读写的Characteristic匹配出设备上的CBCharacteristic，保存在本地，用于后面的写与读。
@@ -31,27 +31,27 @@
         //[[NSNotificationCenter defaultCenter] postNotificationName:@"DiscoverCharacteristics" object:service];
     }];
 ```
-### scan
+### 扫描
 ```
 [self.BLE scan]
 ```
-### stop scan
+### 停止扫描
 ```
 [self.BLE stopScan]
 ```
-### connect
+### 连接
 ```
 [self.BLE connectWithPeripheral:peri]
 ```
-### cancel connect
+### 断开连接
 ```
 [self.BLE cancelConnectWithPeripheral:peri]
 ```
-### read RSSI
+### 读取信号量
 ```
 [self.BLE readRSSIWithPeriperal:peri]
 ```
-### send command
+### 发送指令
 ```
 [self.BLE sendDataToPeriperal:peri WriteCharacteristic:self.writeCharacter Command:command NSEncoding:encoding]
 ```
@@ -79,7 +79,7 @@ NSData *cmdData = [[NSString stringWithFormat:@"%@",command] dataUsingEncoding:e
 ```
 你也可以设置指令间隔时间，但是这样会造成因心跳刷新过快造成的延迟发送。
 
-## warning
+## 注意
 1. 在新版本的iOS中，已经不允许通过```peripheral.RSSI```来获取设备的信号量，必须在用```[peripheral readRSSI]```后，使用回调来获取。这就会造成在扫描到设备时候无法显示信号量。所以专门创建了一个分类CBPeripheral+RSSI，利用Runtime来动态给peripheral创建了一个```rssi```属性。
 ```
 char nameKey;
@@ -121,6 +121,6 @@ _timer = [NSTimer timerWithTimeInterval:0.2 target:self selector:@selector(sendH
 return _timer;
 }
 ```
-## effect
+## 效果图
 ![DeviceList](https://github.com/manofit/GJLightBlueTooth/blob/master/GJLightBlueTooth/GJLightBlueTooth/DeviceListVC.PNG)
 ![DataSend](https://github.com/manofit/GJLightBlueTooth/blob/master/GJLightBlueTooth/GJLightBlueTooth/DataSendVC.PNG)
