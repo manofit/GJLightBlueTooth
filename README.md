@@ -122,5 +122,5 @@ return _timer;
 }
 ```
 ## 效果图
-![DeviceList](https://github.com/manofit/GJLightBlueTooth/blob/master/GJLightBlueTooth/GJLightBlueTooth/DeviceListVC.PNG)
-![DataSend](https://github.com/manofit/GJLightBlueTooth/blob/master/GJLightBlueTooth/GJLightBlueTooth/DataSendVC.PNG)
+![DeviceList](https://github.com/manofit/ScreenPics/blob/master/LightBlue_Pics/DeviceListVC.PNG)
+![DataSend](https://github.com/manofit/ScreenPics/blob/master/LightBlue_Pics/DataSendVC.PNG)
